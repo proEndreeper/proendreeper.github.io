@@ -1,74 +1,186 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Proendreeper.github.io : Website" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Proendreeper.github.io</title>
+    <title>Character List</title>
   </head>
-
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/proEndreeper">View on GitHub</a>
-
-          <h1 id="project_title">Proendreeper.github.io</h1>
-          <h2 id="project_tagline">Website</h2>
-
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
+    <style>
+      #chl_title {
+        display:block;
+        margin:0;
+        text-align:center;
+        width:300px;
+        font-size:24px;
+        border-bottom:thin solid black;
+        line-height:30px;
+        height:30px;
+      }
+      #chl_search_results {
+        list-style:none;
+        padding:0;
+        margin:0;
+        height:328px;
+        overflow-y:scroll;
+      }
+      #chl_search {
+        width:95%;
+        font-size:14px;
+        line-height:18px;
+      }
+      #chl_search_results li {
+        display:block;
+        border:thin solid black;
+        border-top:0;
+        line-height:30px;
+        font-size:18px;
+        background-color:#eee;
+      }
+      #chl_search_results li.first {
+        border-top:thin solid black;
+      }
+      #chl_search_results li > a {
+        text-decoration:none;
+        color:black;
+        margin-left:10px;
+      }
+      #chl_sel_char {
+        background-color:#ccc;
+      }
+      #chl_search_results li:hover {
+        background-color:#aaa;
+      }
+      #chl_body {
+        border:thin solid black;
+      }
+      #chl_img {
+        height:202px;
+        width:153px;
+        margin-left:74px;
+        max-height:202px;
+        border:thin solid black;
+      }
+      #chl_bio {
+        font-size:16px;
+        margin-top:auto;
+        bottom:0;
+        height:112px;
+        width:100%;
+        border-top:2px solid black;
+        overflow-y:scroll;
+      }
+    </style>
+  
+    <table id="chl_table">
+      <tbody>
+        <tr>
+          <td>
+            <input id="chl_search">
+            <ul id="chl_search_results">
+              <li class="first">
+                <a class="chl_char" name="someone">
+                  <img src=""> Someone
+                </a>
+              </li>
+            </ul>
+          </td>
+          <td valign="top" id="chl_body">
+            <span id="chl_title"></span>
+            <img id="chl_img">
+            <div id="chl_bio"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     
-
+    <script type="application/json" id="chl_data">
+      {
+        "characters":{
+          "someone":{
+            "name":"Someone",
+            "bio":["Someone in the story"]
+          },
+          "ralph":{
+            "name":"Ralph",
+            "bio":["Owner of the Conch"]
+          }
+        }
+      }
+    </script>
+    
+    <script type="text/javascript">
+      var data = JSON.parse(document.getElementById("chl_data").innerHTML);
+    
+      function l(id){return document.getElementById(id)}
+    
+      function crel(tN){return document.createElement(tN)}
+      
+      function updateInfo(name,dt) {
+        var char_data = typeof(dt)=="array"?dt[name] || {"name":null,"bio":[]} : data.characters[name] || {"name":null,"bio":[]};
+        
+        var els = document.getElementsByClassName("chl_char");
+        for(var x=0,el;x<els.length;x++) {
+          if(els[x].name==name) {
+            els[x].id="chl_sel_char";
+          } else {
+            els[x].id=null;
+          }
+        }
+        
+        l("chl_title").innerHTML=char_data.name;
+        l("chl_img").src=char_data.img || "";
+        
+        els = l('chl_bio').childNodes;
+        for(x=0,el;x<els.length;x++) {
+          els[x].remove()
+        }
+        
+        for(x=0;x<char_data.bio.length;x++) {
+          var par = crel('p');
+          par.innerHTML=char_data.bio[x];
+          l('chl_bio').appendChild(par);
+        }
+      }
+      
+      function genItemLink(name,dt) {
+        var char_data = typeof(dt=="object")?dt[name] || {"name":null,"bio":[]} : data.characters[name] || {"name":null,"bio":[]};
+        var item = crel("li");
+        item.name=name;
+        item.className="chl_char";
+        var anc = crel("a");
+        anc.name=name;
+        anc.href="#"+name;
+        anc.innerHTML=' {NAME}'.replace(/{NAME}/g,char_data.name);
+        anc.addEventListener("click",function(){updateInfo(name)})
+        item.appendChild(anc);
+        return item;
+      }
+      
+      function updateList() {
+        var query = l('chl_search').value;
+        var els = document.getElementsByClassName("chl_char");
+        for(var x=0,el;x<els.length;x++) {
+          els[x].remove()
+        }
+        
+        var results = {};
+        for(var k in data.characters) {
+          var char = data.characters[k];
+          if(typeof(char.name)=="string" && char.name.indexOf(query)!=-1) {
+            results[k]=char;
+          }
+        }
+        
+        var list = l('chl_search_results');
+        for(var k in results) {
+          var char = results[k];
+          if(typeof(char.name)=="string" && char.name.indexOf(query)!=-1) {
+            list.appendChild(genItemLink(k,results));
+          }
+        }
+      }
+      
+      updateList();
+      l('chl_search').addEventListener("change",updateList);
+    </script>
   </body>
 </html>
